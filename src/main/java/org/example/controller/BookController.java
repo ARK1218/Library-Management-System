@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/books")
 public class BookController {
 
@@ -41,5 +42,9 @@ public class BookController {
     @PutMapping("/{id}")
     public Book updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
         return bookService.updateBook(id, bookDetails);
+    }
+    @PutMapping("/{bookId}/return")
+    public Book returnBook(@PathVariable Long bookId){
+        return bookService.returnBook(bookId);
     }
 }

@@ -65,4 +65,10 @@ public class BookService {
         // 4. Save and return the updated book
         return bookRepository.save(book);
     }
+    public Book returnBook(Long BookId){
+        Book book = bookRepository.findById(BookId)
+                .orElseThrow(() -> new RuntimeException("Book not found with id " + BookId));
+        book.setMember(null);
+        return bookRepository.save(book);
+    }
 }
